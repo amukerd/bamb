@@ -36,5 +36,6 @@ if premium.Visible == true then
     task.wait(5)
     rejoin()
 else
+    wait(1)
     rejoin()
 end
