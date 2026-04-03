@@ -33,7 +33,7 @@ if premium.Visible == true then
     repeat 
         task.wait(0.5) 
     until premium.Visible == false
-
+    task.wait(5)
     rejoin()
 else
     rejoin()
