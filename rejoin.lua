@@ -12,11 +12,8 @@ task.wait(2)
 
 local components = workspace:WaitForChild("Components")
 local crateListPath = components:WaitForChild("ControlPoints"):WaitForChild("Center"):WaitForChild("capturePointUI"):WaitForChild("main"):WaitForChild("rewardFrame"):WaitForChild("crateList")
+local premiumCrate = crateListPath:WaitForChild("premiumCrate")
 local notificationPath = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("notificationPopup"):WaitForChild("itemNotification")
-
-local crates = {
-    ["Premium Crate"] = crateListPath:WaitForChild("premiumCrate")
-}
 
 local function sendWebhook(message)
     local headers = {["Content-Type"] = "application/json"}
@@ -42,21 +39,8 @@ local function rejoin()
     end
 end
 
-local foundName = nil
-local foundObject = nil
-
-for name, object in pairs(crates) do
-    if object.Visible == true then
-        foundName = name
-        foundObject = object
-        break
-    end
-end
-
-if foundName == "Premium Crate" then
-    sendWebhook(foundName)
-
-    repeat task.wait(0.1) until foundObject.Visible == false
+if premiumCrate.Visible then
+    sendWebhook("Premium Crate")
 
     local newChild = notificationPath.ChildAdded:Wait()
 
