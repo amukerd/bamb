@@ -8,7 +8,14 @@ local WebhookURL = "https://discord.com/api/webhooks/1480676513668923627/c-7JOdi
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
-task.wait(2)
+
+local structuresFolder = workspace:WaitForChild("Plots"):WaitForChild(LocalPlayer.Name .. "'s plot"):WaitForChild("baseplate"):WaitForChild("Structures")
+local collectRemote = game.ReplicatedStorage.Shared.Resources.PlotResources.Remotes.Collect
+
+for _, structure in pairs(structuresFolder:GetChildren()) do
+    collectRemote:FireServer(structure)
+    task.wait() 
+end
 
 local components = workspace:WaitForChild("Components")
 local crateListPath = components:WaitForChild("ControlPoints"):WaitForChild("Center"):WaitForChild("capturePointUI"):WaitForChild("main"):WaitForChild("rewardFrame"):WaitForChild("crateList")
