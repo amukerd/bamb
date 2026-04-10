@@ -41,7 +41,8 @@ local wantedTraits = {
 "Tiny X",
 "Tiny IX",
 "Tiny VIII",
-"Tiny VII",
+"Titanic IX",
+"Titanic X"
 }
 
 local wantedLookup = {}
