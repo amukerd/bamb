@@ -2,7 +2,7 @@ local Players = game:GetService("Players")
 local LP = Players.LocalPlayer
 local PlotName = LP.Name .. "'s plot"
 
-local manualGlobalModifier = 0.1 
+local manualGlobalModifier = 4 
 local monumentBuffPerUnit = 0.25 
 
 local StructureUtil = require(game.ReplicatedStorage.Shared.Resources.PlotResources.StructureUtil)
