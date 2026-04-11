@@ -1,14 +1,12 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local placeRemote = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Resources"):WaitForChild("PlotResources"):WaitForChild("Remotes"):WaitForChild("PlaceStructure")
 
--- Configuration
 local structureName = "ProPyramids_Tiny VIII"
 local rows = 5
 local columns = 30
 
--- Dimensions + 0.05 spacing
-local sizeX = 9.074999809265137 + 0.05
-local sizeZ = 9.020000457763672 + 0.05
+local sizeX = 9.074999809265137 + 0.01
+local sizeZ = 9.020000457763672 + 0.01
 
 local startCFrame = CFrame.new(
     -208.962952, 
