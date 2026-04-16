@@ -9,6 +9,21 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
+local components = workspace:WaitForChild("Components")
+local crateListPath = components:WaitForChild("ControlPoints"):WaitForChild("Center"):WaitForChild("capturePointUI"):WaitForChild("main"):WaitForChild("rewardFrame"):WaitForChild("crateList")
+local premiumCrate = crateListPath:WaitForChild("premiumCrate")
+local notificationPath = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("notificationPopup"):WaitForChild("itemNotification")
+
+--game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Resources"):WaitForChild("LootCrateResources"):WaitForChild("Remotes"):WaitForChild("ToggleTenOpen"):FireServer()
+--local openRemote = game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Resources"):WaitForChild("LootCrateResources"):WaitForChild("Remotes"):WaitForChild("OpenLootCrate")
+--
+--task.spawn(function()
+--    while not premiumCrate.Visible do
+--        openRemote:FireServer("Elite")
+--        task.wait(0.5)
+--    end
+--end)
+
 local structuresFolder = workspace:WaitForChild("Plots"):WaitForChild(LocalPlayer.Name .. "'s plot"):WaitForChild("baseplate"):WaitForChild("Structures")
 local collectRemote = game.ReplicatedStorage.Shared.Resources.PlotResources.Remotes.Collect
 
@@ -16,11 +31,6 @@ for _, structure in pairs(structuresFolder:GetChildren()) do
     collectRemote:FireServer(structure)
     task.wait() 
 end
-
-local components = workspace:WaitForChild("Components")
-local crateListPath = components:WaitForChild("ControlPoints"):WaitForChild("Center"):WaitForChild("capturePointUI"):WaitForChild("main"):WaitForChild("rewardFrame"):WaitForChild("crateList")
-local premiumCrate = crateListPath:WaitForChild("premiumCrate")
-local notificationPath = LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("notificationPopup"):WaitForChild("itemNotification")
 
 local function sendWebhook(message)
     local headers = {["Content-Type"] = "application/json"}
@@ -43,6 +53,8 @@ local function rejoin()
         LocalPlayer:Kick("\nRejoining...")
         task.wait() 
         TeleportService:Teleport(game.PlaceId, LocalPlayer)
+    else
+        LocalPlayer:Kick("\nServer not empty. Disconnecting.")
     end
 end
 
